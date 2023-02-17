@@ -1,0 +1,5 @@
+- id: groovyfmt-docker
+  name: Lint groovy files
+  description: Format groovy/Jenkinsfiles
+  language: docker
+  types: [groovy]
