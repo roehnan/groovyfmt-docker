@@ -1,5 +1,6 @@
 - id: groovyfmt-docker
   name: Lint groovy files
   description: Format groovy/Jenkinsfiles
+  entry: /app/wrapper.py
   language: docker
   types: [groovy]
