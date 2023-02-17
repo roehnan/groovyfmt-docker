@@ -4,4 +4,3 @@
   entry: /app/wrapper.py
   language: docker
   require_serial: true
-  files: ^Jenkinsfile$|\.groovy$
