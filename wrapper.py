@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 from hashlib import blake2b
 from pathlib import Path
 from subprocess import call, DEVNULL
@@ -8,12 +9,13 @@ from sys import argv, exit
 FORMAT_CMD = ['/app/format/bin/format']
 
 if __name__ == '__main__':
-    if len(argv[1:]) == 0:
-        print('no files specified')
-        exit(0)
-    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filenames', nargs='*', help='Filenames to check.')
+    args = parser.parse_args(argv)
+
     # grab our list of files
-    files = [Path(f) for f in argv[1:]]
+    files = [Path(f) for f in args.filenames]
+    print(files)
     # calculate hashes before formatting, for change detection
     hashes = {f:blake2b(f.read_bytes()).hexdigest() for f in files}
 
