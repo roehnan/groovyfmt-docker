@@ -14,7 +14,7 @@ if __name__ == '__main__':
     args = parser.parse_args(argv)
 
     # grab our list of files
-    files = [Path(f) for f in args.filenames if (f.name.startswith('Jenkins') or f.suffix == '.groovy')]
+    files = [f for f in (Path(tmp) for tmp in args.filenames) if (f.name.startswith('Jenkins') or f.suffix == '.groovy')]
     print(files)
     # calculate hashes before formatting, for change detection
     hashes = {f:blake2b(f.read_bytes()).hexdigest() for f in files}
